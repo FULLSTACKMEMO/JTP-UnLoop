@@ -1,0 +1,38 @@
+{
+  "manifest_version": 2,
+  "name": "Jira Team Plan UnLoop",
+  "version": "0.0.1",
+  "description": "用于修复在jira中使用Jira Team Planning时查询项目列表时进入无线循环导致CPU使用率升高卡顿的问题.",
+  "permissions": [
+    "http://example.com:8080/secure/TeamPlanning.jspa",
+    "storage",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "icons": {
+    "16": "images/lemon-violet.png",
+    "48": "images/lemon-violet.png",
+    "128": "images/lemon-violet.png"
+  },
+  "web_accessible_resources": [
+    "/libs/bluebird.min.js",
+    "/libs/lodash.min.js",
+    "/libs/ajaxhook.min.js",
+    "/content_scripts/content_script.js",
+    "/content_scripts/hookLoader.js"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": [
+        "/libs/bluebird.min.js",
+        "/libs/lodash.min.js",
+        "/libs/ajaxhook.min.js",
+        "/content_scripts/content_script.js",
+        "/content_scripts/hookLoader.js"
+      ],
+      "all_frames": true,
+      "run_at": "document_end"
+    }
+  ]
+}
